@@ -2,20 +2,37 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    --body-bg: blue;
+    align-items: center;
+    --light-dark-btn-content: "Light Mode"
+    background-color:var(--body-bg)
+}
+body.dark{
+    --body-bg: black;
 }
 h1{
     text-align: center; 
+    color: gold;
+    
+    
 }
 section.board {
     display: grid;
     grid-template-rows: repeat(3, 30vmin);
     grid-template-columns: repeat(3, 30vmin);
     grid-gap: 0vmin;
+    
 }
-
+.btn{
+    margin: 10px 30px;
+    font-size: 1rem;
+    border: 0;
+    box-shadow:5px 2px 5px 0 white;
+}
 div {
-    border: 3px solid black;
+    border: 10px dashed gold;
     font-size: 8vmin;
     text-align: center;
     vertical-align: middle;
+    gap: 10px;
 }

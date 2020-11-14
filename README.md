@@ -41,5 +41,17 @@ Player Two: Computer
 
 Constants:
 Board
+Player XO
+winningCombo
 
+Cached Element:
+resetButton- when the reset button is click
+table/board- when the board is click 
+light to dark- to change the lighting 
 
+Brain Processing-
+
+Player X clicks on square => yield an 'X' in the square => wins are recorded
+Reset Button yields
+
+render messages
