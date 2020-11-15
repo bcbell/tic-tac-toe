@@ -27,8 +27,17 @@ td {
    font-size: 70px;
 }
 
-tr ::after {
+.playWithO,
+.playWithX{
+    color: magenta;
+}
+
+.playWithX::after {
     content: 'X';
+}
+
+.playWithO::after {
+    content: 'O'
 }
 
 table tr:first-child td{
@@ -47,6 +56,10 @@ table tr td:last-child{
     border-right: 0;
 }
 
+.buttons{
+    display: flex;
+    justify-content: space-around;
+}
 .btn{
     margin: 10px 30px;
     font-size: 1rem;
@@ -57,9 +70,14 @@ table tr td:last-child{
    
 }
 
-.resetButton:hover{
-    color: white;
+#resetButton:hover{
+    color: black;
+}
+
+#lightToDark:hover{
+    color:white;
 }
     
+
     
     
