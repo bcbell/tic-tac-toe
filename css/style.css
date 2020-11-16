@@ -5,6 +5,10 @@ body {
     cursor: pointer;
     align-items: center;
     background: black;
+
+ 
+    
+
     
 }
 
@@ -14,14 +18,15 @@ h1{
     border-bottom: 5px double white;
     border-left: 5px double white;
     border-right: 5px double white;
-      
+   
 }
 table{
     display: flex;
     align-items: center;
     padding-top: 50px;
-    
+   
 }
+
     
 td {
    border: 10px dotted #d4af37;

@@ -23,8 +23,8 @@ Header Text: Orange border with yellow filler (lights)
 Other Text: White 
 
 Font:
-Heading: Scriptorama Tradeshow JF
-Text and X and O: Franklin Gothic
+Heading: Merienda One
+Text and X and O: Merienda One
 
 Button:
 Replay
@@ -46,8 +46,21 @@ winningCombo
 
 Cached Element:
 resetButton- when the reset button is click
-table/board- when the board is click 
+table/squares- when the board is click 
 light to dark- to change the lighting 
+message- to display messages
+
+Event Handlers:
+There's an event handler to select the squares as well as to reset the game
+
+Event Listeners:
+
+There's an event listener to activate the each square as well as for the reset button
+
+Function:
+
+Functions theWinnerIs- to determine which letter to activate next in the game
+findAWinner- ultizes the "theWinnerIs" function in the statusUpdate function to determine a winner based on the placement of the X's and O's which tiggers a message indicating the winner.
 
 Brain Processing-
 

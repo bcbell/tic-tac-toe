@@ -3,18 +3,8 @@ const playerX = 'X'
 const playerO = 'O'
 
 
-const winningCombo = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-]
+
 /*---------------------------- Variables (state) ----------------------------*/
-// let board, winner
 let playGame = true //Game Start
 let turn = true //Turn
 let winner = null
@@ -24,16 +14,13 @@ let winner = null
 
 /*------------------------ Cached Element References ------------------------*/
 const squares= document.querySelectorAll('td.square')
-const resetButton =document.querySelector('#resetButton')
-// const handleMove =(evt) => console.log(evt)
-const lightToDark= document.querySelectorAll('#lightToDark')
-const message = document.querySelector('#message')
+const resetButton =document.getElementById('resetButton')
+const message = document.getElementById('message')
 
 
 /*-------------------------------- Event Handlers --------------------------------*/ 
 const handleMoveSquare =(evt)=> {
     const classList =evt.target.classList
-const location = classList [1]
 
 if (classList[2] === 'X' || classList [2] === 'O'){
     return
@@ -67,7 +54,7 @@ for (square of squares){
 }
 
 resetButton.addEventListener('click', handleReset)
-// lightToDark.addEventListener('click', turnItOff)
+
 
 /*-------------------------------- Functions --------------------------------*/ 
 const theWinnerIs = (letter) => letter === 'X' ? playerX : playerO
@@ -92,6 +79,16 @@ const statusUpdate = () => {
     const squareBC = squares[7].classList[2]
     const squareBR = squares[8].classList[2]
 
+    //      Possible Win Combinations = [
+    //     [0, 1, 2],
+    //     [3, 4, 5],
+    //     [6, 7, 8],
+    //     [0, 3, 6],
+    //     [1, 4, 7],
+    //     [2, 5, 8],
+    //     [0, 4, 8],
+    //     [2, 4, 6],
+    // ]
 
 //Checking for a winner 
         if (squareTL && squareTL ===squareTC && squareTL ===squareTR){
