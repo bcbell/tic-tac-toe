@@ -1,9 +1,7 @@
 /*-------------------------------- Constants --------------------------------*/
-const player ={
-    '1' :'blue',
-    '-1' : 'orange',
-    'null' : 'black'
-}
+const playerX = 'X'
+const playerO = 'O'
+
 
 const winningCombo = [
     [0, 1, 2],
@@ -16,7 +14,11 @@ const winningCombo = [
     [2, 4, 6],
 ]
 /*---------------------------- Variables (state) ----------------------------*/
-let board, winner,turn
+// let board, winner
+let playGame = true //Game Start
+let turn = true //Turn
+let winner = null
+
 
 
 
@@ -27,48 +29,61 @@ const handleMove =(evt) => console.log(evt)
 const lightToDark= document.querySelectorAll('#lightToDark')
 const message = document.querySelector('#message')
 
+
+/*-------------------------------- Event Handlers --------------------------------*/ 
+const handleMoveSquare =(evt)=> {
+    const classList =evt.target.classList
+const location = classList [1]
+
+if (classList[2] === 'X' || classList [2] === 'O'){
+    return
+}
+if(turn){
+    classList.add('X')
+    statusUpdate()
+    turn = !turn
+}  else{
+    classList.add('O')
+    statusUpdate()
+    turn = !turn
+}   
+}
+
+const handleReset = (evt) => {
+    console.log(evt.target.resetButton)
+}
+
+
 /*----------------------------- Event Listeners -----------------------------*/
 
-resetButton.addEventListener('click', handleMove)
+resetButton.addEventListener('click', handleReset)
+
+for (square of squares){
+    square.addEventListener('click', handleMoveSquare)
+}
+
 // lightToDark.addEventListener('click', turnItOff)
 
 /*-------------------------------- Functions --------------------------------*/ 
 
+const statusUpdate = () => {
+    const squareTL = squares[0].classList[2]
+    const squareTC = squares[1].classList[2]
+    const squareTR = squares[2].classList[2]
+    const squareML = squares[3].classList[2]
+    const squareMC = squares[4].classList[2]
+    const squareMR = squares[5].classList[2]
+    const squareBL = squares[6].classList[2]
+    const squareBC = squares[7].classList[2]
+    const squareBR = squares[8].classList[2]
 
-const handleMoveSquare =(evt) => {//launch an 'x' or 'o' when triggered by the handleMoveSquare in the eventListener
-    const whereOnTheBoard = evt.target.whereOnTheBoard
-if (board [whereOnTheBoard] || winner)
-    return 
-    board[whereOnTheBoard] = turn
-    turn *= -1
-    winner = findAWinner ()
-}
-
-console.log(handleMoveSquare)
-
-for(const square of squares){
-    square.addEventListener('click', handleMoveSquare)
-}
-
-function findAWinner() {
-    for (let i = 0; i < winningCombo.length; i++) {
-      if (Math.abs(board[winningCombo[i][0]] + board[winningCombo[i][1]] + board[winningCombo[i][2]]) === 3) 
-      return board[winningCombo[i][0]];
-    }
-        if (board.includes(null)) return (null)
-            return 'Tie'
-}
-console.log(findAWinner)
-
-function render() {
-    board.forEach(function(squares, whereOnTheBoard){
-        squares [square].style.background = player [whereOnTheBoard]
-    })  
-   if (winner = 'Tie'){
-       message.innerHTML =`It's a Tie!`
-   } else if (winner){
-    message.innerHTML = `${player [winner]} has won! Great Job!`
-    }else{
-        message.innerHTML = `It's ${player[turn]} turn`
+//Checking for a winner 
+    if(squareTL && squareTL === squareTC && squareTL === squareTR){
+        playGame =false
+        winner = squareTL
+        message.innerHTML= `${squareTL} has won!`
     }
 }
+
+
+

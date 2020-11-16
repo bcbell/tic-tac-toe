@@ -27,16 +27,10 @@ td {
    font-size: 70px;
 }
 
-.playWithO,
-.playWithX{
-    color: magenta;
-}
-
-.playWithX::after {
+.X::after{
     content: 'X';
-}
 
-.playWithO::after {
+}.O::after{
     content: 'O'
 }
 
