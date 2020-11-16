@@ -4,12 +4,16 @@ body {
     font-family: 'Merienda One', cursive;
     cursor: pointer;
     align-items: center;
+    background: black;
     
 }
 
 h1{
     text-align: center; 
     color: gold;
+    border-bottom: 5px double white;
+    border-left: 5px double white;
+    border-right: 5px double white;
       
 }
 table{
@@ -20,7 +24,7 @@ table{
 }
     
 td {
-   border: 10px dotted gold;
+   border: 10px dotted #d4af37;
    height: 150px;
    width: 150px;
    text-align: center;
@@ -29,9 +33,11 @@ td {
 
 .X::after{
     content: 'X';
+    color: white;
 
 }.O::after{
-    content: 'O'
+    content: 'O';
+    color: #ff073a;
 }
 
 table tr:first-child td{
@@ -62,16 +68,35 @@ table tr td:last-child{
     align-items: left;
     padding-top: 10px;
    
+}#resetButton{
+    background-color: #ff073a;
+}
+#resetButton:hover{
+    color: white;
 }
 
-#resetButton:hover{
-    color: black;
+#lightToDark{
+    background-color: #ff073a;
+    color: white;
 }
 
 #lightToDark:hover{
     color:white;
 }
     
+#message{
+    color: #ff005c;
+}
 
+span{
+    color: #440bd4;
+    animation: blink 1s linear infinite;
+
+}
+@keyframes blink{
+    0%{opacity: 0;}
+    50%{opacity: .5;}
+    100%{opacity: 1;}
+    }
     
     
