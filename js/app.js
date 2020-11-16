@@ -25,7 +25,7 @@ let winner = null
 /*------------------------ Cached Element References ------------------------*/
 const squares= document.querySelectorAll('td.square')
 const resetButton =document.querySelector('#resetButton')
-const handleMove =(evt) => console.log(evt)
+// const handleMove =(evt) => console.log(evt)
 const lightToDark= document.querySelectorAll('#lightToDark')
 const message = document.querySelector('#message')
 
@@ -40,28 +40,33 @@ if (classList[2] === 'X' || classList [2] === 'O'){
 }
 if(turn){
     classList.add('X')
+    turn =!turn
     statusUpdate()
-    turn = !turn
 }  else{
     classList.add('O')
+    turn =!turn
     statusUpdate()
-    turn = !turn
 }   
 }
 
-const handleReset = (evt) => {
-    console.log(evt.target.resetButton)
+const handleReset = () => {
+    turn = true
+    message.innerHTML= `Another Round of Tic Tac Toe`
+    winner = null
+      for(const square of squares){
+          square.classList.remove('X')
+          square.classList.remove('O')
+      }
 }
 
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-resetButton.addEventListener('click', handleReset)
-
 for (square of squares){
     square.addEventListener('click', handleMoveSquare)
 }
 
+resetButton.addEventListener('click', handleReset)
 // lightToDark.addEventListener('click', turnItOff)
 
 /*-------------------------------- Functions --------------------------------*/ 
@@ -76,12 +81,10 @@ const findAWinner = (letter) => {
     }
 }
 
-
 const statusUpdate = () => {
     const squareTL = squares[0].classList[2]
     const squareTC = squares[1].classList[2]
     const squareTR = squares[2].classList[2]
-    
     const squareML = squares[3].classList[2]
     const squareMC = squares[4].classList[2]
     const squareMR = squares[5].classList[2]
@@ -106,10 +109,18 @@ const statusUpdate = () => {
         findAWinner(squareTL); 
     } else if (squareTR && squareTR === squareMC && squareTR=== squareBL){
         findAWinner(squareTR);
-    } else if(squareTL && squareTC && squareTR && squareML && squareMC && squareMR && squareBL && squareBC && squareBR){
+    } else if (squareTL && squareTC && squareTR && squareML && squareMC && squareMR && squareBL && squareBC && squareBR){
         playGame =false
-        message.innerHTML=  `<span>This game ends in a tie! Try again!</span>`
-}  
-
+        message.innerHTML= `<span>This game ends in a tie! Try again!</span>`
+   
+    }
 }
+
+
+
+
+
+ 
+
+
 
